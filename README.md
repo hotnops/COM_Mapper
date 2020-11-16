@@ -7,7 +7,7 @@ COM_Mapper is a C# tool that maps out COM class/interface relationships in neo4j
 # Usage
 You need to stand up a neo4j server and modify Program.cs to point to the instance IP and port as well as the credentails. These will be command line arguments on the next update. Once neo4j is up and running, run COM_Mapper.exe. You will need to babysit this process as many COM classes will produce popups and initializing some COM classes will cause the process to crash. If the process crashes, you can provide the last CLSID processed as a command line argument and COM_Mapper will resume at that CLSID. Once COM_Mapper is finished, you will have all COM classes and interfaces saved in a neo4j database  that you can then query for research.
 
-#Examples
+# Examples
 ## Querying for all classes that implement a set of interfaces
 ```
 MATCH (c:ComClass) - [:implements] -> (:ComInterface {name:"IPersistFile"})
