@@ -32,6 +32,10 @@ RETURN c
 MATCH (c:ComClass {clsid:"{1C82EAD9-508E-11D1-8DCF-00C04FB951F9}"}) - [:implements] -> (i:ComInterface)
 RETURN c, i
 ```
+```
+MATCH (c:ComClass {ProgId:"ScriptBridge.ScriptBridge.1"}) - [:implements] -> (i:ComInterface)
+RETURN c, i
+```
 ## Querying for all COM classes implemented by a dll
 ```
 MATCH (c:ComClass {InProcServer32:"C:\\Windows\\SysWOW64\\mshtml.dll"})
