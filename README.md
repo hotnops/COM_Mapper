@@ -2,10 +2,21 @@
 A tool to create COM class/interface relationships in neo4j. It is designed to be run once on a developer system, and it will take a few hours to complete. Once completed, a user can issue cypher queries via Neo4j and get COM class/interface relationships. This is very much a quick and dirty prototype that was created to serve my needs for doing Microsoft Office OLE research. Please feel free to expand or shoot me ideas to make this better.
 
 # Intro
-COM_Mapper is a C# tool that maps out COM class/interface relationships in neo4j, enabling the user to perform custom on COM class implementation. COM_Mapper works by iterating through each COM class registered under HKCR\CLSID and HKLM\Software\WOW64Node\Classes\CLSID. COM_Mapper will initialize each class and attempt to call QueryInterface for every interface registered under HKLM\Software\Classes\Interface and HKCR\Interface. If the COM class supports the interface, a relationship will be created in neo4j. 
+COM_Mapper is a C# tool that maps out COM class/interface relationships in neo4j, enabling the user to perform custom queries on COM class implementation. COM_Mapper works by iterating through each COM class registered under HKCR\CLSID and HKLM\Software\WOW64Node\Classes\CLSID. COM_Mapper will initialize each class and attempt to call QueryInterface for every interface registered under HKLM\Software\Classes\Interface and HKCR\Interface. If the COM class supports the interface, a relationship will be created in neo4j. 
 
 # Usage
 You need to stand up a neo4j server and modify Program.cs to point to the instance IP and port as well as the credentails. These will be command line arguments on the next update. Once neo4j is up and running, run COM_Mapper.exe. You will need to babysit this process as many COM classes will produce popups and initializing some COM classes will cause the process to crash. If the process crashes, you can provide the last CLSID processed as a command line argument and COM_Mapper will resume at that CLSID. Once COM_Mapper is finished, you will have all COM classes and interfaces saved in a neo4j database  that you can then query for research.
+
+To start:
+```
+.\COM_Mapper.exe
+```
+
+To continue after crashing:
+```
+.\COM_Mapper.exe "{00000000-0000-0000-0000-000000000000}"
+```
+Where the GUID is the last GUID printed to screen before crash.
 
 # Examples
 In your browser, go to the neo4j instance (usually http://127.0.0.1:7474) and connect to the database. After COM_Mapper.exe has finished registering all COM classes/interfaces, you can issue cypher queries to get information about COM classes and interfaces.
