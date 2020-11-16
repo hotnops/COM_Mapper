@@ -46,3 +46,11 @@ RETURN c
 MATCH (c:ComClass) WHERE EXISTS (c.LocalServer32)
 RETURN c
 ```
+
+## FAQ
+### Isn't there a better way to do this?
+Probably.
+### Isn't there already a project that does this and more?
+Yeah, probably. I'd like to know about it though, so send me a link.
+### Why did you do this?
+I am researching components that can be substituted when initializing OLE objects in the Microsoft Office environment. Initially, I wanted to find all classes that implement IOleObject, IDataObject, and IPersistStorage, and OLE View didn't have that functionality. As I was continuing research, I found it very helpful to be able to run custom queries on a whim, like "Oh, I only need a class with an out of proc server and an IPersistFile implementation". This project is very niche, but hopefully it's helpful to those messing with COM or OLE.
