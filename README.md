@@ -1,5 +1,5 @@
 # COM_Mapper
-A tool to create COM class/interface relationships in neo4j. It is designed to be run once on a developer system, and it will take a few hours to complete. Once completed, a user can issue cypher queries via Neo4j and get COM class/interface relationships.
+A tool to create COM class/interface relationships in neo4j. It is designed to be run once on a developer system, and it will take a few hours to complete. Once completed, a user can issue cypher queries via Neo4j and get COM class/interface relationships. This is very much a quick and dirty prototype that was created to serve my needs for doing Microsoft Office OLE research. Please feel free to expand or shoot me ideas to make this better.
 
 # Intro
 COM_Mapper is a C# tool that maps out COM class/interface relationships in neo4j, enabling the user to perform custom on COM class implementation. COM_Mapper works by iterating through each COM class registered under HKCR\CLSID and HKLM\Software\WOW64Node\Classes\CLSID. COM_Mapper will initialize each class and attempt to call QueryInterface for every interface registered under HKLM\Software\Classes\Interface and HKCR\Interface. If the COM class supports the interface, a relationship will be created in neo4j. 
